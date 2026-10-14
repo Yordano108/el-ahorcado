@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2a231c">
+    <title>El Ahorcado - React</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Kalam:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/ahorcado.png">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Colores de tiza y fuentes como clases de Tailwind (text-amarillo, font-display...) -->
+    <style type="text/tailwindcss">
+        @theme inline {
+            --color-tiza: var(--tiza);
+            --color-tiza-tenue: var(--tiza-tenue);
+            --color-amarillo: var(--amarillo);
+            --color-rosa: var(--rosa);
+            --color-azul: var(--azul);
+            --color-verde: var(--verde);
+            --font-sans: "Kalam", "Comic Sans MS", cursive;
+            --font-display: "Cabin Sketch", "Kalam", cursive;
+        }
+    </style>
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+</head>
+
+<body>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <filter id="tiza" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="ruido" />
+            <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.2" xChannelSelector="R" yChannelSelector="G"
+                result="trazo" />
+            <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="8" result="grano" />
+            <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0
+                        0 0 0 0 0
+                        0 0 0 0 0
+                        2.4 0 0 0 -0.45" result="huecos" />
+            <feComposite in="trazo" in2="huecos" operator="in" />
+        </filter>
+    </svg>
+
+    <div id="root">
+
+        <p style="margin-top: 6rem; text-align: center; color: #f3f0e6; opacity: .6;">Cargando el juego…</p>
+    </div>
+
+    <script src="js/palabras.js"></script>
+
+    <script type="text/babel" data-presets="react" src="react/Dibujo.jsx"></script>
+    <script type="text/babel" data-presets="react" src="react/Teclado.jsx"></script>
+    <script type="text/babel" data-presets="react" src="react/Confeti.jsx"></script>
+    <script type="text/babel" data-presets="react" src="react/App.jsx"></script>
+    <script type="text/babel" data-presets="react" src="react/main.jsx"></script>
+</body>
+
+</html>
